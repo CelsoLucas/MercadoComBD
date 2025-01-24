@@ -2,15 +2,18 @@ import mysql.connector
 import customtkinter as ctk
 from tela_cadastrar_produto import coletar_dados
 from restaurar_bd import restaurar_banco
+from tela_login import user_login
 
 def main():
 
     conexao = mysql.connector.connect(
         host='localhost',
-        user='celsadas',
-        password='33880188',
+        user='suporte',
+        password='suporte',
         database='mercado'
     )
+    
+    user_login(ctk, conexao)
 
     restaurar_banco(conexao)
     
@@ -24,6 +27,7 @@ def main():
     tabview.add("Cadastrar Produto")
     tabview.add("Estoque")
     tabview.add("Vender")
+    tabview.add("Cadastrar Funcionario")
 
     coletar_dados(ctk, tabview, conexao)
 
