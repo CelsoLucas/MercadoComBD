@@ -1,26 +1,30 @@
-from check_user import checker
+import customtkinter as ctk
+from check_login import checker
+class telaLogin(ctk.CTk):
+    def __init__(self, conexao):
+        super().__init__()
 
-def user_login(ctk, conexao):
-    janela_login = ctk.CTk()
-    ctk.set_appearance_mode("dark")
-    ctk.set_default_color_theme("dark-blue")
-    janela_login.geometry("500x500")
+        self.geometry("600x600")
+        self.title("Login")
 
-    texto1 = ctk.CTkLabel(janela_login, text="Usuario").pack()
-    user_entry = ctk.CTkEntry(janela_login)
-    user_entry.pack()
+        txt_login = ctk.CTkLabel(self, text="LOGIN")
+        txt_login.pack(pady=10)
 
-    texto2 = ctk.CTkLabel(janela_login, text="Senha").pack()
-    senha_entry = ctk.CTkEntry(janela_login, show="*")
-    senha_entry.pack()
+        txt_user = ctk.CTkLabel(self, text="Usuario")
+        txt_user.pack(pady=10)
 
-    def login():
-        usuario = user_entry.get().strip()
-        senha = senha_entry.get().strip()
+        input_user = ctk.CTkEntry(self)
+        input_user.pack(pady=10)
 
-        checker(ctk, conexao, usuario, senha, janela_login)
-    
-    ctk.CTkButton(janela_login, text="Cadastrar", command=login).pack()
-    
+        txt_senha = ctk.CTkLabel(self, text="senha")
+        txt_senha.pack(pady=10)
 
-    janela_login.mainloop()
+        input_senha = ctk.CTkEntry(self, show="*")
+        input_senha.pack(pady=10)
+
+        btn_login = ctk.CTkButton(self, text="Login", command=checker(input_user.get(), input_senha.get(),txt_validacao, conexao))
+        btn_login.pack(pady=10)
+
+        txt_validacao = ctk.CTkLabel(self, text="") 
+        txt_validacao.pack(pady=10)
+
