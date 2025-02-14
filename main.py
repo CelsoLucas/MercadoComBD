@@ -16,7 +16,7 @@ class Main(ctk.CTk):
 
         self.tela_login = telaLogin(self.conexao)
         self.tela_login.mainloop()
-    
+
 if __name__ == "__main__":
     app = Main()
     app.mainloop()

@@ -22,7 +22,7 @@ class telaLogin(ctk.CTk):
         input_senha = ctk.CTkEntry(self, show="*")
         input_senha.pack(pady=10)
 
-        btn_login = ctk.CTkButton(self, text="Login", command=checker(input_user.get(), input_senha.get(),txt_validacao, conexao))
+        btn_login = ctk.CTkButton(self, text="Login", command=lambda: checker(input_user.get(), input_senha.get(), txt_validacao, conexao, self))
         btn_login.pack(pady=10)
 
         txt_validacao = ctk.CTkLabel(self, text="") 
