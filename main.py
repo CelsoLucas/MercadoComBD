@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tela_login import telaLogin
-from tela_principal import telaPrincipal
+
 import mysql.connector
 
 class Main(ctk.CTk):

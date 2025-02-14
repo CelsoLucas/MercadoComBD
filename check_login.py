@@ -5,7 +5,7 @@ class checker():
         self.senha = senha
         self.conexao = conexao
         cursor = self.conexao.cursor()
-        comando = f"select usuario, senha from usuarios where usuario = '{self.user}'"
+        comando = f"select nome_usu, senha from usuarios where nome_usu = '{self.user}'"
         cursor.execute(comando)
         resultado = cursor.fetchall()
         cursor.close()
@@ -17,5 +17,5 @@ class checker():
             else:
                 validacao.configure(text=f"Bem Vindo {self.user}")
                 tela_login.destroy()
-                app = telaPrincipal(self.user)
+                app = telaPrincipal(self.user, self.conexao)
                 app.mainloop()

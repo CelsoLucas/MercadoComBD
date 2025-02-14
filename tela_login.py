@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from check_login import checker
+
 class telaLogin(ctk.CTk):
     def __init__(self, conexao):
         super().__init__()
