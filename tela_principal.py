@@ -30,5 +30,5 @@ class telaPrincipal(ctk.CTk):
 
         abaPrincipal(self.tabview)
         abaEstoque(self.tabview, self.conexao)
-        abaPdv(self.tabview)
+        abaPdv(self.tabview, self.conexao)
 

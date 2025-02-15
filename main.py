@@ -1,6 +1,5 @@
 import customtkinter as ctk
 from tela_login import telaLogin
-
 import mysql.connector
 
 class Main(ctk.CTk):
@@ -9,8 +8,8 @@ class Main(ctk.CTk):
         
         self.conexao = mysql.connector.connect(
             host="localhost",
-            user="suporte",
-            password="suporte",
+            user="celsadas",
+            password="33880188",
             database="mercado"
         )
 
