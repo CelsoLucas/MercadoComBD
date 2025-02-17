@@ -11,8 +11,12 @@ class telaPrincipal(ctk.CTk):
         self.geometry("800x800")
         self.title("Mercado do Celso")
 
+        self.grid_columnconfigure(0, weight=1, uniform="equal")
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_rowconfigure(1, weight=3)
+
         self.txt_logo = ctk.CTkLabel(self, text="Celsadas Super Mercados", font=("poppins", 24))
-        self.txt_logo.pack(pady=10)
+        self.txt_logo.pack(fill="both", expand=True)
         self.txt_logo.place(x=50, y=20)
 
         self.txt_ola_user = ctk.CTkLabel(self, text=f"Olá, {usuario}", font=("poppins", 24))

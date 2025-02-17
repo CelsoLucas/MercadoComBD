@@ -3,29 +3,42 @@ from procurar_produto import procurarProduto
 
 class abaPdv():
     def __init__(self, tabview, conexao):
-        self.tab_pvd = tabview.add("PDV")
+        self.tab_pdv = tabview.add("PDV")
         self.conexao = conexao
-
-        self.input_procurar_produtos = ctk.CTkEntry(self.tab_pvd, placeholder_text="Procurar Produtos com id ou nome", width=200)
+        
+        self.input_procurar_produtos = ctk.CTkEntry(self.tab_pdv, placeholder_text="Procurar Produtos com id ou nome", width=220)
         self.input_procurar_produtos.pack()
 
-        self.txt_variavel_global = ctk.CTkLabel(self.tab_pvd, text="")
-        self.txt_variavel_global.pack()
-        
-        self.btn_menos = ctk.CTkButton(self.tab_pvd, text="-")
-        self.btn_menos.pack()
+        self.txt_resultado_busca = ctk.CTkLabel(self.tab_pdv, text="")
 
-        self.quant_global = ctk.CTkLabel(self.tab_pvd, text="")
-        self.quant_global.pack()
+        self.quant_escolhida = ctk.CTkLabel(self.tab_pdv, text=0)
 
-        self.btn_mais = ctk.CTkButton(self.tab_pvd, text="+")
-        self.btn_mais.pack()
+        self.txt_alerta_quant = ctk.CTkLabel(self.tab_pdv, text="")
+        self.txt_alerta_quant.pack()
+        self.txt_alerta_quant.place(x=750, y=60)
 
-        self.txt_quant_min_max_global = ctk.CTkLabel(self.tab_pvd, text="")
-        self.txt_quant_min_max_global.pack()
+        self.produto = None
 
-        self.btn_procurar_produtos = ctk.CTkButton(self.tab_pvd, text="Buscar Produto", command= lambda: procurarProduto(self.conexao, self.input_procurar_produtos, self.txt_variavel_global))
+        self.btn_menos = ctk.CTkButton(self.tab_pdv, text="-", width=25, height=25, corner_radius=100, command=self.menos)
+        self.btn_mais = ctk.CTkButton(self.tab_pdv, text="+",  width=25, height=25, corner_radius=100, command=self.mais)
+
+        self.btn_procurar_produtos = ctk.CTkButton(self.tab_pdv, text="Buscar Produto", command=self.procurar_produto)
         self.btn_procurar_produtos.pack()
+        self.btn_procurar_produtos.place(x=800)
 
+    def procurar_produto(self):
+        self.produto = procurarProduto(self.conexao, 
+                                       self.input_procurar_produtos, 
+                                       self.txt_resultado_busca,
+                                       self.quant_escolhida,
+                                       self.btn_menos, 
+                                       self.btn_mais, 
+                                       self.txt_alerta_quant)
 
-        
+    def menos(self):
+        if self.produto:
+            self.produto.menos()
+
+    def mais(self):
+        if self.produto:
+            self.produto.mais()
