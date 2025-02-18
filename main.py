@@ -8,13 +8,15 @@ class Main(ctk.CTk):
         
         self.conexao = mysql.connector.connect(
             host="localhost",
-            user="suporte",
-            password="suporte",
+            user="celsadas",
+            password="33880188",
             database="mercado"
         )
 
         self.tela_login = telaLogin(self.conexao)
         self.tela_login.mainloop()
+
+        self.conexao.close()
 
 if __name__ == "__main__":
     app = Main()
